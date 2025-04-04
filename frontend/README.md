@@ -54,7 +54,9 @@ GitSummarize automates the hardest part: figuring out *what the code does* and *
    cd gitsummarize
    ```
 
-2. **Run the Next.js Project**
+2. Create a new `.env` file and copy the contents of `.env.template` to it. Fill values
+
+3. **Run the Next.js Project**
     ```bash
     npm run dev
     ```
