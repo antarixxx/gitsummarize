@@ -19,6 +19,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Repository URL is required' }, { status: 400 });
     }
 
+    const backendSummarizeUrl = `${process.env.BACKEND_URL}/summarize`; // Use env var
+
     // Call the external API with the bearer token and extended timeout
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 240000); // 240 second timeout
@@ -26,7 +28,7 @@ export async function POST(request: Request) {
     try {
       console.log(`Making request to external API for: ${repo_url}`);
 
-      const response = await fetch('https://gitsummarize-kwzz.onrender.com/summarize', {
+      const response = await fetch(backendSummarizeUrl, { // Use the constructed URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
